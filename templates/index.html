@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text to Speech</title>
+</head>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script>
+const form = document.getElementById('form');
+form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+const formData = new FormData(form);
+await fetch('/speak', {
+method: 'POST',
+    body: formData
+});
+});
+</script>
+<body>
+    <div class="header"><h1>Text-Reader---AI</h1></div>   
+<div class="body">
+    <div class="container"><div class="div1"></div>
+        <div class="div2"></div>
+    <div class="div3"></div>
+    <div class="div4"></div>
+    </div>
+    <form id="form" action="/speak" method="post">
+        <label for="text">Enter text:</label>
+        <input type="text" id="text" name="text"  placeholder="Enter text to speak" required>
+        <button id="button" type="submit" >Speak</button>
+        </form>
+    
+</div>
+</body>
+</html>
